@@ -1,0 +1,66 @@
+- id: "insider"
+  logo: /images/media/insider.svg
+  date: "01.02.2025"
+  title:
+    ua: "Ukraine says it's developing upgraded versions of the Chinese-made Mavic drone"
+    en: "Ukraine says it's developing upgraded versions of the Chinese-made Mavic drone"
+  url: "https://www.businessinsider.com/ukraine-developing-upgraded-versions-china-mavic-drones-export-limits-war-2025-1?IR=T&IR=C"
+  linkText:
+    ua: "Читати більше"
+    en: "Read more"
+  pair: 1
+- id: "unian"
+  logo: /images/media/unian.svg
+  date: "02.02.2025"
+  title:
+    ua: "Україна розробила аналоги китайського дрона Mavic і використовує їх на фронті"
+    en: "Ukraine has developed analogues of the Chinese Mavic drone and is using them on the front"
+  url: "https://www.unian.ua/weapons/mavic-ukrajina-rozrobila-analogi-kitayskogo-drona-i-vikoristovuye-jih-na-fronti-12903231.html"
+  linkText:
+    ua: "Читати більше"
+    en: "Read more"
+  pair: 1
+- id: "uatv"
+  logo: /images/media/ua.svg
+  date: "14.01.2024"
+  title:
+    ua: "War is algebra | Cheap and accurate drone"
+    en: "War is algebra | Cheap and accurate drone"
+  url: "https://www.youtube.com/watch?v=NB50Y7be1gs&ab_channel=UATVEnglish"
+  linkText:
+    ua: "Дивитись відео"
+    en: "Watch video"
+  pair: 2
+- id: "focus"
+  logo: /images/media/Focus.svg
+  date: "25.05.2023"
+  title:
+    ua: "Українці створили унікальний дрон UKROPTER для ЗСУ: технічні характеристики"
+    en: "Ukrainians created a unique drone UKROPTER for the Armed Forces of Ukraine: technical specifications"
+  url: "https://focus.ua/digital/568703-ukraincy-sozdali-unikalnyy-dron-ukropter-dlya-vsu-tehnicheskie-harakteristiki-foto"
+  linkText:
+    ua: "Читати більше"
+    en: "Read more"
+  pair: 2
+- id: "forbes"
+  logo: /images/media/Forbes.svg
+  date: "15.11.2024"
+  title:
+    ua: "Місія – замінити Китай. Україна створила 10 аналогів найпопулярнішому дрону DJI Mavic"
+    en: "The mission is to replace China. Ukraine has created 10 analogues of the most popular drone DJI Mavic"
+  url: "https://forbes.ua/money/zaminiti-kitay-ukraina-stvorila-10-analogiv-naypopulyarnishomu-dronu-dji-mavic-chim-voni-vidriznyayutsya-ta-chi-zdatni-zadovilniti-potrebi-zsu-detalna-infografika-14112024-24773"
+  linkText:
+    ua: "Читати більше"
+    en: "Read more"
+  pair: 3
+- id: "the-gaze"
+  logo: /images/media/the-gaze-seeklogo.svg
+  date: "11.02.2024"
+  title:
+    ua: "UKROPTER - most affordable, and super-efficient multifunctional drone"
+    en: "UKROPTER - most affordable, and super-efficient multifunctional drone"
+  url: "https://www.facebook.com/TheGazeDigitalPlatform/videos/1348725712443576/"
+  linkText:
+    ua: "Читати більше"
+    en: "Read more"
+  pair: 3

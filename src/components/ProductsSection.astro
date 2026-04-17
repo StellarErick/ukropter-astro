@@ -1,0 +1,26 @@
+---
+import { getCollection } from 'astro:content'
+import ProductCard from '@/components/ProductCard.astro'
+import type { Lang } from '@/i18n/ui'
+
+interface Props {
+  lang: Lang
+}
+
+const { lang } = Astro.props
+const products = await getCollection('products')
+const sorted = products.sort((a, b) => a.data.order - b.data.order)
+const sectionTitle = lang === 'ua' ? 'наші розробки' : 'Our products'
+---
+
+<section class="container our-developments section" id="our-developments">
+  <div class="title-container-h2">
+    <h2 class="typography-h2">{sectionTitle}</h2>
+  </div>
+
+  <ul class="our-developments__list">
+    {sorted.map((product, i) => (
+      <ProductCard product={product.data} lang={lang} isFirst={i === 0} />
+    ))}
+  </ul>
+</section>

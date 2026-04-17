@@ -1,0 +1,59 @@
+---
+import ContactForm from '@/components/ContactForm.astro'
+
+interface Props {
+  data: {
+    sectionTitle: string
+    subtitle: string
+    subtitlePattern: string
+    text: string
+    phone: { text: string; href: string }
+    email: { text: string; href: string }
+    instagram: { text: string; href: string }
+  }
+  lang: 'ua' | 'en'
+}
+
+const { data, lang } = Astro.props
+---
+
+<section class="contacts section" id="contacts">
+  <div class="container">
+    <div class="title-container-h2">
+      <h2 class="typography-h2">{data.sectionTitle}</h2>
+    </div>
+
+    <div class="contacts__form-container">
+      <div class="contacts__form-container-left">
+        <h3 class="contacts__form-title">
+          <span class="text-stack">
+            <span class="text-base typography-h3">{data.subtitle}</span>
+            <span aria-hidden="true" class="text-pattern typography-h3">{data.subtitlePattern}</span>
+          </span>
+        </h3>
+        <p class="contacts__form-container-left-text">{data.text}</p>
+        <ul class="contacts__conact-list">
+          <li class="contacts__conact-item">
+            <div class="contacts__conact-item-icon-container">
+              <svg class="contacts__conact-item-icon"><use href="/images/sprite.svg#icon-Phone"></use></svg>
+            </div>
+            <a href={data.phone.href} class="contacts__conact-item-link" target="_blank">{data.phone.text}</a>
+          </li>
+          <li class="contacts__conact-item">
+            <div class="contacts__conact-item-icon-container">
+              <svg class="contacts__conact-item-icon"><use href="/images/sprite.svg#icon-At"></use></svg>
+            </div>
+            <a href={data.email.href} class="contacts__conact-item-link">{data.email.text}</a>
+          </li>
+          <li class="contacts__conact-item">
+            <div class="contacts__conact-item-icon-container">
+              <svg class="contacts__conact-item-icon"><use href="/images/sprite.svg#icon-Instagram-Icon"></use></svg>
+            </div>
+            <a href={data.instagram.href} target="_blank" class="contacts__conact-item-link">{data.instagram.text}</a>
+          </li>
+        </ul>
+      </div>
+      <ContactForm lang={lang} />
+    </div>
+  </div>
+</section>

@@ -1,0 +1,184 @@
+---
+import type { Lang } from '@/i18n/ui'
+import { useTranslations } from '@/i18n/ui'
+
+interface Props {
+  lang: Lang
+}
+
+const { lang } = Astro.props
+const t = useTranslations(lang)
+const privacyPath = lang === 'en' ? '/pages/policy-privacy/eng/' : '/pages/policy-privacy/'
+const offerPath = lang === 'en' ? '/pages/public-offer/eng/' : '/pages/public-offer/'
+---
+
+<form id="contacts-form" class="contacts__form">
+  <div class="contacts__input-container">
+    <label for="name" class="contacts__input-label">{t('form.name')}</label>
+    <div>
+      <input
+        autocomplete="on"
+        id="name"
+        name="name"
+        type="text"
+        placeholder={t('form.name.placeholder')}
+      />
+    </div>
+  </div>
+  <div class="contacts__input-container">
+    <label for="tel" class="contacts__input-label">{t('form.phone')}*</label>
+    <div>
+      <input
+        id="tel"
+        name="tel"
+        type="tel"
+        placeholder={t('form.phone.placeholder')}
+        required
+      />
+    </div>
+    <p class="contacts__input-label-required">{t('form.required')}</p>
+  </div>
+  <div class="contacts__input-container">
+    <label for="email" class="contacts__input-label">E-mail*</label>
+    <div>
+      <input
+        id="email"
+        name="email"
+        type="email"
+        placeholder={t('form.email.placeholder')}
+        required
+      />
+    </div>
+    <p class="contacts__input-label-required">{t('form.required')}</p>
+  </div>
+  <div class="contacts__input-container">
+    <label for="message" class="contacts__input-label">{t('form.message')}</label>
+    <div class="contacts__input-container-textarea">
+      <textarea
+        id="message"
+        name="message"
+        placeholder={t('form.message.placeholder')}
+      ></textarea>
+      <p class="contacts__input-container-textarea-counter">
+        <span>
+          <span class="contacts__input-container-textarea-counter-value">0</span><span>/180</span>
+        </span>
+        <svg width="16" height="16"><use href="/images/sprite.svg#icon-resize"></use></svg>
+      </p>
+    </div>
+  </div>
+  <div class="contacts__form-button-container">
+    <button type="submit" class="button-order contacts__button">
+      {t('btn.send')}
+    </button>
+
+    <p class="contacts__form-text">
+      {t('form.consent.prefix')}
+      <a href={privacyPath} class="contacts__form-text-link">{t('form.consent.privacy')}</a>
+      {t('form.consent.mid')}
+      <a href={offerPath} class="contacts__form-text-link">{t('form.consent.offer')}</a>
+      {t('form.consent.suffix')}
+    </p>
+  </div>
+</form>
+
+<script>
+  import emailjs from '@emailjs/browser'
+
+  emailjs.init('Hn9ySpjdSSjOfx4r-')
+
+  const contactForm = document.getElementById('contacts-form') as HTMLFormElement
+  if (contactForm) {
+    const textareaCounter = contactForm.querySelector(
+      '.contacts__input-container-textarea-counter'
+    )
+    const textarea = document.querySelector('#message') as HTMLTextAreaElement
+
+    if (textarea) {
+      textarea.addEventListener('input', function (event) {
+        const target = event.target as HTMLTextAreaElement
+        const value = target.value
+        const valueLength = value.length
+        const counterValue = textareaCounter?.querySelector(
+          '.contacts__input-container-textarea-counter-value'
+        )
+        if (counterValue) counterValue.textContent = String(valueLength)
+
+        if (valueLength > 180) {
+          target.value = value.slice(0, 180)
+        }
+      })
+    }
+
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault()
+
+      const submitButton = contactForm.querySelector(
+        'button[type="submit"]'
+      ) as HTMLButtonElement
+      const originalText = submitButton.textContent || ''
+
+      submitButton.textContent = submitButton.closest('[data-lang="en"]')
+        ? 'Sending...'
+        : 'Відправляємо...'
+      submitButton.disabled = true
+
+      const formData = {
+        to_name: 'УКРОПТЕР',
+        to_email: 'pm.ukropter@gmail.com',
+        from_name: (contactForm.querySelector('#name') as HTMLInputElement).value,
+        from_phone: (contactForm.querySelector('#tel') as HTMLInputElement).value,
+        from_email: (contactForm.querySelector('#email') as HTMLInputElement).value,
+        message: (contactForm.querySelector('#message') as HTMLTextAreaElement).value,
+        reply_to: (contactForm.querySelector('#email') as HTMLInputElement).value,
+      }
+
+      const NETHUNT_WEBHOOK_URL =
+        'https://nethunt.com/service/automation/hooks/698385a3bf0b87b7803af662'
+      const webhookPayload = {
+        from_name: formData.from_name,
+        from_phone: formData.from_phone,
+        from_email: formData.from_email,
+        message: formData.message,
+      }
+
+      fetch(NETHUNT_WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(webhookPayload),
+      })
+        .then((res) => {
+          if (!res.ok) throw new Error('Webhook failed')
+        })
+        .catch((err) => {
+          console.error('NetHunt webhook error:', err)
+        })
+
+      emailjs
+        .send('service_axm24vo', 'template_yx8oeea', formData)
+        .then(
+          function () {
+            const isEn = document.documentElement.lang === 'en'
+            alert(
+              isEn
+                ? 'Thank you! Your message has been sent successfully.'
+                : 'Дякуємо! Ваше повідомлення успішно відправлено.'
+            )
+            contactForm.reset()
+          },
+          function () {
+            const isEn = document.documentElement.lang === 'en'
+            alert(
+              isEn
+                ? 'Sorry, an error occurred while sending. Please try again.'
+                : 'Вибачте, сталася помилка при відправці. Спробуйте ще раз.'
+            )
+          }
+        )
+        .finally(() => {
+          submitButton.textContent = originalText
+          submitButton.disabled = false
+        })
+    })
+  }
+</script>

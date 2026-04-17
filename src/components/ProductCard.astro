@@ -1,0 +1,135 @@
+---
+import type { Lang } from '@/i18n/ui'
+
+interface Props {
+  product: {
+    slug: string
+    order: number
+    reverse?: boolean
+    images: string[]
+    badge?: { ua: string; en: string; icon: string }
+    ua: {
+      title: string
+      items?: { name: string; data?: string; text: string }[]
+      equipmentTitle?: string
+      equipment?: { name: string; qty?: string }[]
+    }
+    en: {
+      title: string
+      items?: { name: string; data?: string; text: string }[]
+      equipmentTitle?: string
+      equipment?: { name: string; qty?: string }[]
+    }
+  }
+  lang: Lang
+  isFirst?: boolean
+}
+
+const { product, lang, isFirst = false } = Astro.props
+const t = product[lang]
+const orderLabel = lang === 'ua' ? 'Замовити' : 'ORDER'
+const detailsLabel = lang === 'ua' ? 'Детальніше' : 'DETAILS'
+const detailHref =
+  lang === 'ua'
+    ? `/pages/${product.slug}`
+    : `/pages/${product.slug}/eng/`
+const formHref = '#contacts-form'
+const halfLen = t.equipment ? Math.ceil(t.equipment.length / 2) : 0
+---
+
+<li
+  class:list={[
+    'our-developments__item',
+    { 'our-developments__item--reverse': product.reverse },
+    { first: isFirst },
+  ]}
+>
+  <div class="splide our-developments__splide" id="our-developments-splide">
+    {product.badge && (
+      <p class="our-developments__splider-badge">
+        {product.badge[lang]}
+        <svg class="our-developments__splider-badge-icon">
+          <use href={`/images/sprite.svg${product.badge.icon}`} />
+        </svg>
+      </p>
+    )}
+    <div class="splide__track">
+      <ul class="splide__list">
+        {product.images.map((img, i) => (
+          <li class="splide__slide">
+            <img
+              src={img}
+              alt="desktop-image"
+              class="splide__item-image"
+              loading="lazy"
+              fetchpriority="low"
+            />
+          </li>
+        ))}
+      </ul>
+      <div class="splider-custom__arrows-container">
+        <div class="splider-custom__arrows-custom">
+          <button class="splider-custom__arrow splider-custom__arrow--prev-custom">
+            <svg width="18" height="16"><use href="/images/sprite.svg#icon-splide-prev"></use></svg>
+          </button>
+          <button class="splider-custom__arrow splider-custom__arrow--next-custom">
+            <svg width="18" height="16"><use href="/images/sprite.svg#icon-splide-next"></use></svg>
+          </button>
+        </div>
+        <div class="about-company__splide-pagination splide__pagination"></div>
+      </div>
+    </div>
+  </div>
+  <div class="our-developments__item-content">
+    <h3 class="our-developments__item-title">
+      <span class="text-stack">
+        <span class="text-base typography-h3">{t.title}</span>
+        <span aria-hidden="true" class="text-pattern typography-h3">{t.title}</span>
+      </span>
+    </h3>
+    <ul class="our-developments__technica-list">
+      {t.items?.map((item) => (
+        <li class="our-developments__technica-item">
+          <div class="our-developments__technica-title-container">
+            <h4 class="typography-h4">{item.name}</h4>
+            {item.data && <p class="our-developments__technica-data">{item.data}</p>}
+          </div>
+          <p class="our-developments__technica-item-text">{item.text}</p>
+        </li>
+      ))}
+      {t.equipment && (
+        <li class="our-developments__technica-item our-developments__technica-item--table">
+          <div class="our-developments__technica-title-container our-developments__technica-title-container--table">
+            <h4 class="typography-h4">{t.equipmentTitle}</h4>
+          </div>
+          <div class="our-developments__technica-list-inner-container">
+            <ul class="our-developments__technica-list-inner">
+              {t.equipment.slice(0, halfLen).map((eq) => (
+                <li class="our-developments__technica-item-inner">
+                  <p class="our-developments__technica-item-text-inner">{eq.name}</p>
+                  {eq.qty && <p class="our-developments__technica-item-text-inner">{eq.qty}</p>}
+                </li>
+              ))}
+            </ul>
+            <ul class="our-developments__technica-list-inner">
+              {t.equipment.slice(halfLen).map((eq) => (
+                <li class="our-developments__technica-item-inner">
+                  <p class="our-developments__technica-item-text-inner">{eq.name}</p>
+                  {eq.qty && <p class="our-developments__technica-item-text-inner">{eq.qty}</p>}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </li>
+      )}
+    </ul>
+    <div class="our-developments__button-container">
+      <a href={formHref} class="button-order our-developments__button">
+        {orderLabel}
+      </a>
+      <a href={detailHref} target="_blank" class="button-specifications our-developments__button">
+        {detailsLabel}
+      </a>
+    </div>
+  </div>
+</li>

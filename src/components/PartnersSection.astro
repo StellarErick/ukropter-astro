@@ -1,0 +1,40 @@
+---
+import { getCollection } from 'astro:content'
+import type { Lang } from '@/i18n/ui'
+
+interface Props {
+  lang: Lang
+}
+
+const { lang } = Astro.props
+const partnerItems = await getCollection('partners')
+const sectionTitle = lang === 'ua' ? 'наші партнери' : 'our partners'
+---
+
+<section class="container our-partners section">
+  <div class="title-container-h2">
+    <h2 class="typography-h2">{sectionTitle}</h2>
+  </div>
+  <div class="our-partners__marquee">
+    <ul class="our-partners__list">
+      {partnerItems.map((partner) => (
+        <li class="our-partners__item">
+          <img
+            src={partner.data.logo}
+            alt={partner.data.name}
+            class="our-partners__item-image"
+          />
+        </li>
+      ))}
+      {partnerItems.map((partner) => (
+        <li class="our-partners__item">
+          <img
+            src={partner.data.logo}
+            alt={partner.data.name}
+            class="our-partners__item-image"
+          />
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

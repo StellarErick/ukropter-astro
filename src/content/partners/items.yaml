@@ -1,0 +1,18 @@
+- id: "usf"
+  name: "USF"
+  logo: /images/partners/usf.svg
+- id: "brave"
+  name: "Brave1"
+  logo: /images/partners/brave.svg
+- id: "dia"
+  name: "DIA"
+  logo: /images/partners/dia.svg
+- id: "global-drone"
+  name: "Global Drone Academy"
+  logo: /images/partners/global-drone.svg
+- id: "ministry-defence"
+  name: "Міноборони"
+  logo: "/images/partners/Ministry_of_Defence_of_Ukraine_UA_logo 1.svg"
+- id: "ministry-economy"
+  name: "Мінекономіки"
+  logo: "/images/partners/Ministry_of_Economy_of_Ukraine_UA_logo 1.svg"

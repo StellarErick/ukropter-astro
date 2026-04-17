@@ -1,0 +1,44 @@
+---
+import { getCollection } from 'astro:content'
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import SplideCarousel from '@/components/SplideCarousel.astro'
+import VideoModal from '@/components/VideoModal.astro'
+import HeroSection from '@/components/HeroSection.astro'
+import AboutSection from '@/components/AboutSection.astro'
+import AdvantagesSection from '@/components/AdvantagesSection.astro'
+import ProductsSection from '@/components/ProductsSection.astro'
+import PartnersSection from '@/components/PartnersSection.astro'
+import PartnershipSection from '@/components/PartnershipSection.astro'
+import ChosenBySection from '@/components/ChosenBySection.astro'
+import ReviewsSection from '@/components/ReviewsSection.astro'
+import OrderProcessSection from '@/components/OrderProcessSection.astro'
+import WhyUkropterSection from '@/components/WhyUkropterSection.astro'
+import FaqSection from '@/components/FaqSection.astro'
+import MediaSection from '@/components/MediaSection.astro'
+import ContactsSection from '@/components/ContactsSection.astro'
+
+const allPages = await getCollection('homepage')
+const page = allPages.find(p => p.data.lang === 'en')!
+const d = page.data
+---
+
+<BaseLayout title={d.pageTitle} lang="en">
+  <main>
+    <HeroSection data={d.hero} lang="en" />
+    <AboutSection data={d.about} />
+    <AdvantagesSection data={d.advantages} />
+    <ProductsSection lang="en" />
+    <PartnersSection lang="en" />
+    <PartnershipSection data={d.partnership} />
+    <ChosenBySection lang="en" />
+    <ReviewsSection lang="en" />
+    <OrderProcessSection data={d.orderProcess} />
+    <WhyUkropterSection data={d.whyUkropter} />
+    <FaqSection lang="en" />
+    <MediaSection lang="en" />
+    <ContactsSection data={d.contacts} lang="en" />
+  </main>
+
+  <SplideCarousel />
+  <VideoModal />
+</BaseLayout>

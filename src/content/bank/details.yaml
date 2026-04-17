@@ -1,0 +1,48 @@
+- id: "ua"
+  lang: "ua"
+  title: "Банківські реквізити для переказу коштів БФ «УКРОПТЕР»"
+  documentsTitle: "Банківські реквізити для переказу коштів БФ «УКРОПТЕР»"
+  fundName: "Фонд «УКРОПТЕР»"
+  bankInfo: "АБ \"УКРГАЗБАНК\" ЄДРПОУ 45059850"
+  iban: "UA603204780000026009924937348"
+  edrpouCode: "45059850"
+  edrpouLabel: "ЄДРПОУ"
+  purpose: "Призначення платежу «Благодійна пожертва»"
+  documents:
+    - name: "статут"
+      file: /files/statut.pdf
+    - name: "протокол"
+      file: /files/protokol.pdf
+    - name: "Витяг"
+      file: /files/viiag-ne-pributkovi.pdf
+    - name: "структура власності"
+      file: /files/struktura-vlasnosti.pdf
+    - name: "опис"
+      file: /files/opis.pdf
+    - name: "виписка"
+      file: /files/vipiska-bf-ukropter.pdf
+- id: "en"
+  lang: "en"
+  title: "Bank details for transferring funds to \"UKROPTER\" Foundation"
+  documentsTitle: "Foundation's incorporation documents"
+  fundName: "Fund \"UKROPTER\""
+  bankInfo: "JSC \"UKRGASBANK\" EDRPOU 45059850"
+  iban: "UA603204780000026009924937348"
+  edrpouCode: "45059850"
+  edrpouLabel: "EDRPOU"
+  purpose: "Payment purpose: \"Charitable donation\""
+  copyText: "Copy"
+  copiedText: "Copied"
+  documents:
+    - name: "Articles of Association"
+      file: /files/statut.pdf
+    - name: "protocol"
+      file: /files/protokol.pdf
+    - name: "Extract (from the Register)"
+      file: /files/viiag-ne-pributkovi.pdf
+    - name: "Ownership Structure"
+      file: /files/struktura-vlasnosti.pdf
+    - name: "Overview"
+      file: /files/opis.pdf
+    - name: "Statement"
+      file: /files/vipiska-bf-ukropter.pdf

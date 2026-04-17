@@ -1,0 +1,38 @@
+---
+import { getCollection } from 'astro:content'
+import FaqDropdown from '@/components/FaqDropdown.astro'
+import type { Lang } from '@/i18n/ui'
+
+interface Props {
+  lang: Lang
+}
+
+const { lang } = Astro.props
+const faqItems = await getCollection('faq')
+---
+
+<section class="faq section">
+  <div class="container">
+    <div class="title-container-h2">
+      <h2 class="typography-h2">FAQ</h2>
+    </div>
+
+    <FaqDropdown>
+      {faqItems.map((item) => (
+        <li class="faq__item">
+          <button class="faq__button">
+            <p class="faq__item-title">
+              {item.data.question[lang]}
+            </p>
+            <div class="faq__item-button-icon-container">
+              <svg width="15" height="19" class="faq__item-button-icon"><use href="/images/sprite.svg#icon-faq-arrow"></use></svg>
+            </div>
+          </button>
+          <div class="faq__item-content">
+            <Fragment set:html={item.data.answerHtml[lang]} />
+          </div>
+        </li>
+      ))}
+    </FaqDropdown>
+  </div>
+</section>

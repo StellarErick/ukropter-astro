@@ -1,0 +1,76 @@
+---
+interface Props {
+  data: {
+    sectionTitle: string
+    subtitle: string
+    subtitlePattern: string
+    features: { icon: string; text: string }[]
+    desktopImageText: string
+    carouselImages: string[]
+  }
+}
+
+const { data } = Astro.props
+---
+
+<section class="container about-company" id="about-company">
+  <div class="title-container-h2">
+    <h2 class="typography-h2">{data.sectionTitle}</h2>
+  </div>
+  <h3 class="about-company__subtitle">
+    <span class="text-stack">
+      <span class="text-base typography-h3">{data.subtitle}</span>
+      <span aria-hidden="true" class="text-pattern typography-h3">{data.subtitlePattern}</span>
+    </span>
+  </h3>
+  <div class="about-company__container">
+    <div class="about-company__container-left">
+      <ul class="about-company__list">
+        {data.features.map(f => (
+          <li class="about-company__item">
+            <div class="about-company__item-icon">
+              <img src={f.icon} alt="" />
+            </div>
+            <p class="about-company__item-text">{f.text}</p>
+          </li>
+        ))}
+      </ul>
+      <div class="about-company__desktop-image-container">
+        <img
+          src="/images/about-company-img-1.jpg"
+          alt="desktop-image"
+          class="about-company__desktop-image"
+        />
+        <p class="about-company__desktop-image-text">{data.desktopImageText}</p>
+      </div>
+    </div>
+    <div class="splide about-company__splide" id="about-company-splide">
+      <div class="splide__track">
+        <ul class="splide__list">
+          {data.carouselImages.map((img, i) => (
+            <li class="splide__slide">
+              <img
+                src={img}
+                alt="desktop-image"
+                class="splide__item-image"
+                loading={i === 0 ? 'eager' : 'lazy'}
+                fetchpriority="high"
+              />
+            </li>
+          ))}
+        </ul>
+        <div class="splider-custom__arrows-container">
+          <div class="splider-custom__arrows-custom">
+            <button class="splider-custom__arrow splider-custom__arrow--prev-custom">
+              <svg width="18" height="16"><use href="/images/sprite.svg#icon-splide-prev"></use></svg>
+            </button>
+            <button class="splider-custom__arrow splider-custom__arrow--next-custom">
+              <svg width="18" height="16"><use href="/images/sprite.svg#icon-splide-next"></use></svg>
+            </button>
+          </div>
+          <div class="about-company__splide-pagination splide__pagination"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

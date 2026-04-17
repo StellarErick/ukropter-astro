@@ -1,0 +1,28 @@
+- id: "1"
+  question:
+    ua: "Чи може цивільна особа купити дрон для ЗСУ?"
+    en: "Can I purchase components and/or equipment separately from drones?"
+  answerHtml:
+    ua: '<p class="faq__item-content-text"><strong>UKROPTER не продає деталі окремо - лише готову зібрану продукцію.</strong></p>'
+    en: '<p class="faq__item-content-text"><strong>UKROPTER does not sell parts separately — only fully assembled products.</strong></p>'
+- id: "2"
+  question:
+    ua: "Як військова частина може придбати дрони у UKROPTER?"
+    en: "How can a military unit purchase drones from UKROPTER?"
+  answerHtml:
+    ua: '<p class="faq__item-content-text">Військові частини можуть придбати дрони у UKROPTER, використовуючи кошти зі <strong>субвенцій місцевих адміністрацій</strong>.<br/><br/>Ми працюємо на підставі офіційного договору, в якому зазначено, що <strong>кінцевим користувачем є Сили оборони України</strong>. Уся процедура передачі дронів документально фіксується: на підставі <strong>запиту та акту приймання-передачі від командира військової частини, завіреного його підписом та печаткою</strong>.</p>'
+    en: '<p class="faq__item-content-text">Military units can purchase drones from UKROPTER using funds from <strong>ocal government subsidies.</strong>.<br/><br/>We work based on an official agreement that states the <strong>final user is the Ukrainian Defense Forces.</strong>. The entire drone transfer procedure is documented: based on a request and an acceptance report signed and stamped by the unit commander.</p>'
+- id: "3"
+  question:
+    ua: "Які терміни виготовлення дронів?"
+    en: "What is the production time for drones?"
+  answerHtml:
+    ua: '<p class="faq__item-content-text"><strong>Стандартний термін виготовлення замовлення - від 30 до 45 днів</strong>. Він може змінюватися залежно від обсягу, комплектації замовлення та завантаженості виробництва.</p>'
+    en: '<p class="faq__item-content-text"><strong>The standard production time for an order is 30 to 45 days.</strong>This may vary depending on the order size, configuration, and production workload.</p>'
+- id: "4"
+  question:
+    ua: "Які сервісні гарантії отримують військові, використовуючи продукцію UKROPTER?"
+    en: "What service guarantees do military clients receive when using UKROPTER products?"
+  answerHtml:
+    ua: '<p class="faq__item-content-text">Ми надаємо <strong>цілодобову технічну підтримку для військових</strong>, яка включає:</p><br/><ul class="faq__item-content-list"><li class="faq__item-content-list-item"><p class="faq__item-content-list-item-text">перепрошивку обладнання;</p></li><li class="faq__item-content-list-item"><p class="faq__item-content-list-item-text">підключення та налаштування;</p></li><li class="faq__item-content-list-item"><p class="faq__item-content-list-item-text">інші сервісні послуги, необхідні для підтримки працездатності дронів.</p></li></ul><br/><p class="faq__item-content-text">Ми гарантуємо <strong>надійність та ефективність нашої продукції у критичних умовах бойових завдань</strong>.</p>'
+    en: '<p class="faq__item-content-text">We provide <strong>24/7 technical support for the military, which includes:</strong></p><br/><ul class="faq__item-content-list"><li class="faq__item-content-list-item"><p class="faq__item-content-list-item-text">Firmware updates</p></li><li class="faq__item-content-list-item"><p class="faq__item-content-list-item-text">Device setup and configuration</p></li><li class="faq__item-content-list-item"><p class="faq__item-content-list-item-text">Other services required to maintain drone operability</p></li></ul><br/><p class="faq__item-content-text"><strong>We guarantee the reliability and effectiveness of our products in critical combat conditions.</strong>.</p>'

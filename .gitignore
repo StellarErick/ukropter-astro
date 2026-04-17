@@ -1,0 +1,23 @@
+node_modules/
+dist/
+.astro/
+.DS_Store
+
+# Legacy pre-Astro files (duplicated in public/ and src/)
+/images/
+/files/
+/pages/
+/eng/
+/index.html
+/index.css
+/index.js
+/js/
+/favicon.ico
+/favicon.svg
+/favicon-96x96.png
+/apple-touch-icon.png
+/web-app-manifest-*.png
+/site.webmanifest
+
+# Large video files (serve from CDN or copy manually to VPS)
+public/images/video-*.MP4

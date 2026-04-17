@@ -1,0 +1,55 @@
+slug: black-cat
+order: 2
+reverse: true
+images:
+  - /images/black-cat/black-cat-5.webp
+  - /images/black-cat/black-cat-1.webp
+  - /images/black-cat/black-cat-2.webp
+  - /images/black-cat/black-cat-3.webp
+  - /images/black-cat/black-cat-4.webp
+ua:
+  title: "БПЛА BLACK CAT"
+  items:
+    - name: "Тепловізійна камера Topotek"
+      text: "безпілотник створений для максимальної ефективності та витривалості в бойових умовах"
+  equipmentTitle: "В комплектацію входить:"
+  equipment:
+    - name: "Дрон"
+      qty: "1 шт."
+    - name: "АКБ"
+      qty: "4 шт."
+    - name: "Наземка з трекером"
+      qty: "1 шт."
+    - name: "Маяки"
+      qty: "2 шт."
+    - name: "ноутбук"
+      qty: "1 шт."
+    - name: "Кабель 50м"
+      qty: "1 шт."
+    - name: "Щогла 6м"
+      qty: "1 шт."
+    - name: "Захищений кейс"
+      qty: "1 шт."
+en:
+  title: "BLACK CAT UAV"
+  items:
+    - name: "Thermal Camera Topotek"
+      text: "Highly sensitive thermal camera designed for detecting enemy personnel and equipment in combat conditions"
+  equipmentTitle: "Kit includes:"
+  equipment:
+    - name: "Drone"
+      qty: "1 pcs"
+    - name: "Battery"
+      qty: "4 pcs"
+    - name: "Ground station with tracker"
+      qty: "1 pcs"
+    - name: "Beacons"
+      qty: "2 pcs"
+    - name: "Laptop"
+      qty: "1 pcs"
+    - name: "50m cable"
+      qty: "1 pcs"
+    - name: "6m mast"
+      qty: "1 pcs"
+    - name: "Protected case"
+      qty: "1 pcs"

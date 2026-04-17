@@ -1,0 +1,76 @@
+slug: complex-ukropter
+order: 1
+reverse: false
+images:
+  - /images/ukropterJpg/ukropter-complex-1.webp
+  - /images/ukropterJpg/ukropter-complex-2.webp
+  - /images/ukropterJpg/ukropter-complex-3.webp
+  - /images/ukropterJpg/ukropter-complex-4.webp
+  - /images/ukropterJpg/ukropter-complex-5.webp
+  - /images/ukropterJpg/ukropter-complex-6.webp
+badge:
+  ua: "присвоєно код нато"
+  en: "NATO CODE ASSIGNED"
+  icon: "#icon-nato"
+ua:
+  title: "КОМПЛЕКС ukropter"
+  items:
+    - name: "БПЛА Бомбер"
+      data: "до 2-х кг бк"
+      text: "ударний дрон, призначений для точкових атак"
+    - name: "БПЛА Розвідник"
+      data: "90-Х Zoom"
+      text: "дрон, що дозволяє отримувати деталізовані зображення цілей"
+  equipmentTitle: "В комплектацію входить:"
+  equipment:
+    - name: "Борт розвідник «UKROPTER»"
+      qty: "1 шт."
+    - name: "Борт носій «UKROPTER»"
+      qty: "1 шт."
+    - name: "Наземна станція управління"
+      qty: "1 шт."
+    - name: "Навігаційні маяки"
+      qty: "2 шт."
+    - name: "Зарядний пристрій"
+      qty: "1 шт."
+    - name: "ноутбук трансформер"
+      qty: "1 шт."
+    - name: "Портативний монітор"
+      qty: "1 шт."
+    - name: "Пульт управління"
+      qty: "2 шт."
+    - name: "Акумуляторна батарея 6S4P"
+      qty: "3 шт."
+    - name: "Транспортний кейс для БпАК"
+      qty: "1 шт."
+en:
+  title: "UKROPTER COMPLEX"
+  items:
+    - name: "UAV Bomber"
+      data: "up to 2 kg warhead"
+      text: "Strike drone for precision attacks"
+    - name: "UAV INTELLIGENCE"
+      data: "90-Х Zoom"
+      text: "Drone designed to capture detailed imagery of targets"
+  equipmentTitle: "Kit includes:"
+  equipment:
+    - name: "\"Ukropter\" Reconnaissance UAV"
+      qty: "1 pcs"
+    - name: "\"Ukropter\" Carrier UAV"
+      qty: "1 pcs"
+    - name: "Ground control station"
+      qty: "1 pcs"
+    - name: "Navigation beacons"
+      qty: "2 pcs"
+    - name: "Charging Device"
+      qty: "1 pcs"
+    - name: "Rugged Convertible Laptop"
+      qty: "1 pcs"
+    - name: "Portable monitor"
+      qty: "1 pcs"
+    - name: "Control Unit"
+      qty: "2 pcs"
+    - name: "6S4P Battery Pack"
+      qty: "3 pcs"
+    - name: "Transport Case for UAV System"
+      qty: "1 pcs"

@@ -1,0 +1,134 @@
+---
+---
+
+<div class="order-process__modal-bacdrop">
+  <div class="order-process__modal-content">
+    <button class="order-process__modal-close" aria-label="Close modal">
+      <svg width="24" height="24"><use href="/images/sprite.svg#icon-close"></use></svg>
+    </button>
+  </div>
+</div>
+
+<script>
+  const modalBackdrop = document.querySelector('.order-process__modal-bacdrop') as HTMLElement
+
+  function loadVideoPosters() {
+    const videos = document.querySelectorAll('.order-process__video') as NodeListOf<HTMLVideoElement>
+    videos.forEach((video) => {
+      video.load()
+    })
+  }
+
+  loadVideoPosters()
+
+  function showModal() {
+    if (modalBackdrop) modalBackdrop.style.display = 'block'
+  }
+
+  function hideModal() {
+    if (modalBackdrop) modalBackdrop.style.display = 'none'
+  }
+
+  function removeModalVideo(modalContent: HTMLElement) {
+    const videoContainer = modalContent.querySelector('.order-process__video-container')
+    if (videoContainer) videoContainer.remove()
+  }
+
+  function handleModalClose(
+    modalContent: HTMLElement,
+    listeners: Array<{ el: HTMLElement; type: string; fn: EventListener }>
+  ) {
+    removeModalVideo(modalContent)
+    listeners.forEach(({ el, type, fn }) => el.removeEventListener(type, fn))
+    hideModal()
+    document.body.classList.remove('no-scroll')
+  }
+
+  function playVideo(video: HTMLVideoElement, playBtn: HTMLElement, event: Event) {
+    event.stopPropagation()
+    video.muted = false
+    video
+      .play()
+      .then(() => {
+        playBtn.style.display = 'none'
+      })
+      .catch(() => {
+        playBtn.style.display = 'block'
+      })
+  }
+
+  function pauseVideo(video: HTMLVideoElement, playBtn: HTMLElement, event: Event) {
+    event.stopPropagation()
+    video.pause()
+    playBtn.style.display = 'block'
+  }
+
+  function initVideoInModal(slide: HTMLElement) {
+    if (!modalBackdrop) return
+    const modalContent = modalBackdrop.querySelector(
+      '.order-process__modal-content'
+    ) as HTMLElement
+    const videoContainer = slide.querySelector('.order-process__video-container')
+    if (!videoContainer) return
+
+    removeModalVideo(modalContent)
+    const videoClone = videoContainer.cloneNode(true) as HTMLElement
+    modalContent.appendChild(videoClone)
+
+    const video = modalContent.querySelector('video') as HTMLVideoElement
+    const playBtn = modalContent.querySelector(
+      '.order-process__slide-video-play'
+    ) as HTMLElement
+    const overlay = modalContent.querySelector('.order-process__video-overlay') as HTMLElement
+    const closeBtn = document.querySelector('.order-process__modal-close') as HTMLElement
+
+    videoClone.classList.toggle('full-width-full-height')
+    if (video) video.classList.toggle('full-width-full-height')
+
+    const listeners: Array<{ el: HTMLElement; type: string; fn: EventListener }> = []
+    if (playBtn) {
+      playBtn.style.display = 'none'
+      const playHandler = (e: Event) => playVideo(video, playBtn, e)
+      playBtn.addEventListener('click', playHandler)
+      listeners.push({ el: playBtn, type: 'click', fn: playHandler })
+    }
+    if (overlay) {
+      const pauseHandler = (e: Event) => pauseVideo(video, playBtn, e)
+      overlay.addEventListener('click', pauseHandler)
+      listeners.push({ el: overlay, type: 'click', fn: pauseHandler })
+    }
+    if (closeBtn) {
+      const closeHandler = (e: Event) => {
+        e.stopPropagation()
+        handleModalClose(modalContent, listeners)
+      }
+      closeBtn.addEventListener('click', closeHandler)
+      listeners.push({ el: closeBtn, type: 'click', fn: closeHandler })
+    }
+
+    const backdropHandler = (e: Event) => {
+      if (e.target === modalBackdrop) {
+        handleModalClose(modalContent, listeners)
+      }
+    }
+    modalBackdrop.addEventListener('click', backdropHandler)
+    listeners.push({ el: modalBackdrop, type: 'click', fn: backdropHandler })
+
+    if (video) {
+      video.muted = false
+      video.play().catch(() => {})
+    }
+  }
+
+  document.querySelectorAll('.splide__slide').forEach((slide) => {
+    const playBtn = slide.querySelector('.order-process__slide-video-play') as HTMLElement
+    if (playBtn) {
+      playBtn.addEventListener('click', (event) => {
+        event.stopPropagation()
+        showModal()
+        document.body.classList.add('no-scroll')
+        initVideoInModal(slide as HTMLElement)
+      })
+    }
+  })
+</script>

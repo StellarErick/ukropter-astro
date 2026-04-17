@@ -1,0 +1,24 @@
+---
+---
+
+<div class="faq-dropdown-wrapper">
+  <slot />
+</div>
+
+<script>
+  document.querySelectorAll('.faq__button').forEach((item) => {
+    item.addEventListener('click', () => {
+      const content = item.nextElementSibling as HTMLElement
+      const icon = item.querySelector('.faq__item-button-icon') as HTMLElement
+      if (content && icon) {
+        if (content.style.display === 'block') {
+          content.style.display = 'none'
+          icon.style.transform = 'rotate(0deg)'
+        } else {
+          content.style.display = 'block'
+          icon.style.transform = 'rotate(180deg)'
+        }
+      }
+    })
+  })
+</script>

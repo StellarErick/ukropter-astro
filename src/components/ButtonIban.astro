@@ -1,0 +1,42 @@
+---
+interface Props {
+  iban: string
+  label: string
+  copyText?: string
+  copiedText?: string
+}
+
+const { iban, label, copyText = 'Скопіювати', copiedText = 'Скопійовано' } = Astro.props
+---
+
+<div class="bank__iban" data-iban={iban} data-copy-text={copyText} data-copied-text={copiedText}>
+  <p class="bank__iban-text">
+    <span>{label}</span>
+    <span>{iban}</span>
+  </p>
+  <p class="bank__iban-copy">
+    <span class="bank__iban-copy-text">{copyText}</span>
+    <span class="bank__iban-copy-text-submited">{copiedText}</span>
+    <span class="bank__iban-copy-icon">
+      <svg width="24" height="24"><use href="/images/sprite.svg#icon-copy"></use></svg>
+    </span>
+    <span class="bank__iban-submited-icon">
+      <svg width="24" height="25"><use href="/images/sprite.svg#icon-check"></use></svg>
+    </span>
+  </p>
+</div>
+
+<script>
+  document.querySelectorAll('.bank__iban').forEach((el) => {
+    el.addEventListener('click', () => {
+      const iban = (el as HTMLElement).dataset.iban
+      if (iban) {
+        navigator.clipboard.writeText(iban)
+        el.classList.add('bank__iban-copy--active')
+        setTimeout(() => {
+          el.classList.remove('bank__iban-copy--active')
+        }, 2000)
+      }
+    })
+  })
+</script>

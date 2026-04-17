@@ -1,0 +1,33 @@
+- id: "ilya"
+  name:
+    ua: "Ілля"
+    en: "Ilya"
+  position:
+    ua: "Бойовий пілот НГУ\nПройшов сертифіковане навчання"
+    en: "Combat pilot, National Guard\nPassed advanced certified training"
+  image: /images/reviews/warlord-1.png
+  text:
+    ua: "«Ми використовували дрони UKROPTER в інтенсивних бойових умовах. Вони продемонстрували високу ефективність, працюючи під ворожим РЕБ. Оператори швидко опанували керування завдяки зручному інтерфейсу та навчальному курсу від GDA. Рекомендуємо до співпраці.»"
+    en: "\"We used UKROPTER drones in intense combat conditions. They demonstrated high effectiveness, operating even under enemy EW (electronic warfare). Operators quickly mastered control thanks to the user-friendly interface and the UAV operator training course. Highly recommend for cooperation.\""
+- id: "anton"
+  name:
+    ua: "Антон Векленко"
+    en: "Anton Veklenko"
+  position:
+    ua: "Засновник Global Drone Academy"
+    en: "Founder, Global Drone Academy"
+  image: /images/reviews/warlord-2.png
+  text:
+    ua: "«Команда UKROPTER - це приклад того, як виробники повинні взаємодіяти із замовниками: йти їм назустріч і постійно вдосконалювати свій продукт. Раді бути партнерами та разом наближати нашу перемогу.»"
+    en: "\"The UKROPTER team is an example of how manufacturers should work with clients: staying in touch and constantly improving their product. We are happy to be partners and work together toward victory.\""
+- id: "shturman"
+  name:
+    ua: "«Штурман»"
+    en: "\"Shturman\""
+  position:
+    ua: "Пілот, Батальйон безпілотних систем, 3 ОШБ"
+    en: "Pilot, UAV Battalion, 3rd Assault Brigade"
+  image: /images/reviews/warlord-3.png
+  text:
+    ua: "«Хочемо відзначити якість продукту та професійну роботу команди. Дякуємо за готовність удосконалювати продукт під наші потреби та відкритість до зворотного зв'язку з бойових. Працюємо далі.»"
+    en: "\"We want to highlight the product's quality and the team's professional work. Thanks for your willingness to upgrade the product based on our needs and for being open to feedback straight from the battlefield. Keep it up!\""

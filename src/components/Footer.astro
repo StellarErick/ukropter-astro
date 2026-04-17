@@ -1,0 +1,90 @@
+---
+import type { Lang } from '@/i18n/ui'
+import { useTranslations, getHomePath } from '@/i18n/ui'
+
+interface Props {
+  lang: Lang
+}
+
+const { lang } = Astro.props
+const t = useTranslations(lang)
+const homePath = getHomePath(lang)
+const contactsPath = lang === 'en' ? '/eng/#contacts-form' : '/#contacts-form'
+const bankPath = lang === 'en' ? '/pages/bank/eng/' : '/pages/bank/'
+const privacyPath = lang === 'en' ? '/pages/policy-privacy/eng/' : '/pages/policy-privacy/'
+const offerPath = lang === 'en' ? '/pages/public-offer/eng/' : '/pages/public-offer/'
+---
+
+<footer class="section section--dark dark-bg footer">
+  <div class="container">
+    <div class="footer__container">
+      <a href={homePath}>
+        <img
+          src="/images/logo.svg"
+          alt="logo"
+          class="header__logo-img footer__logo-img"
+          loading="lazy"
+          fetchpriority="low"
+        />
+      </a>
+      <nav class="header__nav footer__nav">
+        <ul class="header__nav-list">
+          <li class="header__nav-item">
+            <a href={`${homePath}#about-company`} class="menu-link footer__nav-link">
+              {t('nav.about')}
+            </a>
+          </li>
+          <li class="header__nav-item">
+            <a href={`${homePath}#our-developments`} class="menu-link footer__nav-link">
+              {t('nav.products')}
+            </a>
+          </li>
+          <li class="header__nav-item">
+            <a href={`${homePath}#reviews`} class="menu-link footer__nav-link">
+              {t('nav.reviews')}
+            </a>
+          </li>
+          <li class="header__nav-item">
+            <a href={`${homePath}#media`} class="menu-link footer__nav-link">
+              {t('nav.media')}
+            </a>
+          </li>
+          <li class="header__nav-item">
+            <a href={`${homePath}#contacts`} class="menu-link footer__nav-link">
+              {t('nav.contacts')}
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <div class="header__buttons footer__buttons">
+        <a class="button-primary" href={contactsPath}>
+          {t('btn.order')} <span class="button-primary__text">{t('btn.order.drone')}</span>
+        </a>
+        <a class="button-secondary" href={bankPath}>
+          {t('btn.support')}
+          <span class="button-secondary__text">{t('btn.support.production')}</span>
+        </a>
+      </div>
+    </div>
+    <ul class="header__social-list footer__social-list">
+      <li class="header__social-item">
+        <a href="https://www.instagram.com/ukropter/" target="_blank" class="social-link">
+          <svg class="social-icon">
+            <use href="/images/sprite.svg#icon-Instagram-Icon"></use>
+          </svg>
+        </a>
+      </li>
+    </ul>
+    <p class="footer__copyright-container">
+      <span class="footer__copyright">{t('footer.copyright')}</span>
+      <span class="footer__policy-links">
+        <a href={privacyPath} class="footer__policy-link">
+          {t('footer.privacy')}
+        </a>
+        <a href={offerPath} class="footer__policy-link">
+          {t('footer.offer')}
+        </a>
+      </span>
+    </p>
+  </div>
+</footer>

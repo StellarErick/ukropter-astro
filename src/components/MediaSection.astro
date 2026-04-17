@@ -1,0 +1,97 @@
+---
+import { getCollection } from 'astro:content'
+import type { Lang } from '@/i18n/ui'
+
+interface Props {
+  lang: Lang
+}
+
+const { lang } = Astro.props
+const allArticles = await getCollection('media')
+
+const pairGroups = new Map<number, typeof allArticles>()
+for (const article of allArticles) {
+  const pair = article.data.pair ?? 0
+  if (!pairGroups.has(pair)) pairGroups.set(pair, [])
+  pairGroups.get(pair)!.push(article)
+}
+const slides = [...pairGroups.values()]
+---
+
+<section
+  class="media section section--dark dark-bg section--dark--media"
+  id="media"
+>
+  <div class="container">
+    <div class="title-container-h2">
+      <h2 class="typography-h2">{lang === 'ua' ? 'media' : 'Media'}</h2>
+    </div>
+    <div class="splide media__splide" id="our-developments-splide">
+      <div class="splide__track">
+        <ul class="splide__list">
+          {slides.map((slideArticles) => (
+            <li class="splide__slide media__item">
+              {slideArticles.map((article) => (
+                <a
+                  href={article.data.url}
+                  target="_blank"
+                  class="media__item-container"
+                >
+                  <div class="media__item-image">
+                    <img src={article.data.logo} alt="media" />
+                    <p class="media__item-date">{article.data.date}</p>
+                  </div>
+                  <p class="media__item-title">
+                    {article.data.title[lang]}
+                  </p>
+                  <p class="link-secondary media__item-link">
+                    <span>{article.data.linkText[lang]}</span>
+                    <svg width="22" height="22"><use href="/images/sprite.svg#icon-chevron-small"></use></svg>
+                  </p>
+                </a>
+              ))}
+            </li>
+          ))}
+        </ul>
+        <div class="splider-custom__arrows-container">
+          <div class="splider-custom__arrows-custom">
+            <button class="splider-custom__arrow splider-custom__arrow--prev-custom">
+              <svg width="18" height="16"><use href="/images/sprite.svg#icon-splide-prev"></use></svg>
+            </button>
+
+            <div class="media__splide-pagination splide__pagination"></div>
+
+            <button class="splider-custom__arrow splider-custom__arrow--next-custom">
+              <svg width="18" height="16"><use href="/images/sprite.svg#icon-splide-next"></use></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ul class="media__list">
+      {slides.map((slideArticles) => (
+        <li class="media__item">
+          {slideArticles.map((article) => (
+            <a
+              href={article.data.url}
+              target="_blank"
+              class="media__item-container"
+            >
+              <div class="media__item-image">
+                <img src={article.data.logo} alt="media" />
+                <p class="media__item-date">{article.data.date}</p>
+              </div>
+              <p class="media__item-title">
+                {article.data.title[lang]}
+              </p>
+              <p class="link-secondary media__item-link">
+                <span>{article.data.linkText[lang]}</span>
+                <svg width="22" height="22"><use href="/images/sprite.svg#icon-chevron-small"></use></svg>
+              </p>
+            </a>
+          ))}
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

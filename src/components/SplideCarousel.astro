@@ -1,0 +1,76 @@
+---
+---
+
+<slot />
+
+<script>
+  import Splide from '@splidejs/splide'
+
+  function getSplideBreakpoints(slidesCount: number) {
+    if (slidesCount > 1) {
+      return {
+        1439: { perPage: 3 },
+        1023: { perPage: 2 },
+        767: { perPage: 1 },
+      }
+    } else {
+      return {
+        1439: { perPage: 1 },
+      }
+    }
+  }
+
+  const splideInstances = new WeakMap()
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const splideEl = entry.target as HTMLElement
+
+        const slidesToShowOnThePage = Number(splideEl?.dataset?.slidesCount) || 1
+        const slidesCount = splideEl.querySelectorAll('.splide__slide').length
+
+        let splide = splideInstances.get(splideEl)
+
+        if (entry.isIntersecting) {
+          if (!splide) {
+            const splideOptions = {
+              type: 'loop' as const,
+              perPage: slidesToShowOnThePage ? slidesToShowOnThePage : 1,
+              arrows: false,
+              pagination: true,
+              gap: 20,
+              breakpoints: getSplideBreakpoints(slidesToShowOnThePage),
+            }
+            splide = new Splide(splideEl, splideOptions)
+            splide.mount()
+            splideInstances.set(splideEl, splide)
+
+            const prevBtn = splideEl.querySelector(
+              '.splider-custom__arrow--prev-custom'
+            ) as HTMLElement
+            const nextBtn = splideEl.querySelector(
+              '.splider-custom__arrow--next-custom'
+            ) as HTMLElement
+            if (prevBtn && nextBtn) {
+              if (slidesCount > 1) {
+                prevBtn.style.display = 'flex'
+                nextBtn.style.display = 'flex'
+                prevBtn.addEventListener('click', () => splide.go('<'))
+                nextBtn.addEventListener('click', () => splide.go('>'))
+              } else {
+                prevBtn.style.display = 'none'
+                nextBtn.style.display = 'none'
+              }
+            }
+          }
+        }
+      })
+    },
+    { threshold: 0.1 }
+  )
+
+  document.querySelectorAll('.splide').forEach((splideEl) => {
+    observer.observe(splideEl)
+  })
+</script>

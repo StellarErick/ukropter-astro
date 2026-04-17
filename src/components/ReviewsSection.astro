@@ -1,0 +1,50 @@
+---
+import { getCollection } from 'astro:content'
+import type { Lang } from '@/i18n/ui'
+
+interface Props {
+  lang: Lang
+}
+
+const { lang } = Astro.props
+const reviewItems = await getCollection('reviews')
+const sectionTitle = lang === 'ua' ? 'Відгуки військових' : 'FEEDBACK FROM MILITARY PERSONNEL'
+---
+
+<section
+  class="our-partners section section--dark dark-bg reviews"
+  id="reviews"
+>
+  <div class="container">
+    <div class="title-container-h2">
+      <h2 class="typography-h2">{sectionTitle}</h2>
+    </div>
+    <ul class="reviews__list">
+      {reviewItems.map((review) => {
+        const positionLines = review.data.position[lang].split('\n')
+        return (
+          <li class="reviews__item">
+            <div class="reviews__item-content">
+              <img
+                src={review.data.image}
+                alt="review"
+                class="reviews__item-image"
+                loading="lazy"
+                fetchpriority="low"
+              />
+              <div class="reviews__item-info">
+                <p class="reviews__item-name">{review.data.name[lang]}</p>
+                <p class="reviews__item-position">
+                  <Fragment set:html={positionLines.join('<br />')} />
+                </p>
+              </div>
+            </div>
+            <p class="reviews__item-text">
+              {review.data.text[lang]}
+            </p>
+          </li>
+        )
+      })}
+    </ul>
+  </div>
+</section>

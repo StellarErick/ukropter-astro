@@ -1,0 +1,194 @@
+- id: ua
+  lang: ua
+  pageTitle: "Укроптер"
+  hero:
+    titleLine1: "технології"
+    titleLine2: "перемоги"
+    subtitleLine1: "Створено в Україні"
+    subtitleLine2: "Випробувано в бою"
+    orderButton: "Замовити"
+    orderLink: "/#contacts-form"
+    supportButton: "Підтримати"
+    supportLink: "/pages/bank/"
+    heroLink: "БпАК УКРОПТЕР"
+    nav:
+      - text: "Про компанію"
+        href: "#about-company"
+      - text: "Наші розробки"
+        href: "#our-developments"
+      - text: "Відгуки"
+        href: "#reviews"
+      - text: "Медіа"
+        href: "#media"
+      - text: "Контакти"
+        href: "#contacts"
+  about:
+    sectionTitle: "про компанію ukropter"
+    subtitle: "Виробляємо РЕБостійкі безпілотники і надійні наземні дрони !"
+    subtitlePattern: "Виробляємо РЕБостійкі безпілотники і надійні наземні дрони"
+    features:
+      - icon: "/images/propeller.svg"
+        text: "команда професійних інженерів"
+      - icon: "/images/pin-svgrepo-com.svg"
+        text: "локальне українське виробництво"
+      - icon: "/images/lens-svgrepo.svg"
+        text: "створено у співпраці з фахівцями ГУР та Нацгвардії"
+      - icon: "/images/antenna-svgrepo.svg"
+        text: "випробувано в реальних боях з ворогом"
+    desktopImageText: "Defense Tech Investment summit"
+    carouselImages:
+      - "/images/about-company-img-2.jpg"
+      - "/images/about-company-img-3.jpg"
+      - "/images/about-company-img-1.jpg"
+  advantages:
+    sectionTitle: "переваги ukropter"
+    items:
+      - "Стійкість до РЕБ"
+      - "Навігація без GPS по маяках"
+      - "Стабільна відеотрансляція"
+      - "Розумна наземна станція"
+  partnership:
+    sectionTitle: "стати партнером"
+    subtitle: "інвестуй в технології, що наближають нашу спільну перемогу"
+    text: "Партнерство з UKROPTER — це про вклад у технологічну незалежність України та збереження життів на передовій. Ми відкриті до стратегічних партнерів, які бачать у дронах майбутнє оборони й хочуть бути частиною рішень, а не лише реакцій."
+    buttonText: "стати партнером"
+    items:
+      - "Прозорість процесів та прямий зв'язок"
+      - "Доступ до інновацій та військових технологій"
+      - "Реальна соціальна цінність інвестиції"
+  orderProcess:
+    sectionTitle: "Відгуки військових"
+    steps:
+      - "Запит"
+      - "Погодження"
+      - "Виготовлення"
+      - "Передача"
+    videoTitle: "Відеозвіти"
+    videos:
+      - "/images/video-1.MP4"
+      - "/images/video-2.MP4"
+      - "/images/video-3.MP4"
+      - "/images/video-4.MP4"
+      - "/images/video-5.MP4"
+  whyUkropter:
+    sectionTitle: "чому укроптер"
+    subtitle: "Разом з виробами ми надаємо:"
+    training:
+      title: "Обов'язкове навчання"
+      link: "https://gda.com.ua/about-us/"
+      image: "/images/academy.svg"
+      text: "Спільно з нашими партнерами Global Drone Academy ми надаємо обов'язковий навчальний курс, який допоможе швидко та ефективно опанувати управління дронами Ukropter. Навчання входить у вартість виробів."
+    items:
+      - "Цілодобову техпідтримку"
+      - "Гарантію на наші вироби"
+  contacts:
+    sectionTitle: "контакти"
+    subtitle: "Ми завжди на зв'язку"
+    subtitlePattern: "Ми завжди на зв'язку"
+    text: "Заповни форму або напиши нам через WhatsApp чи Signal, і ми оперативно відповімо на всі запитання."
+    phone:
+      text: "38 (099) 356 45 36 (WhatsApp & Signal)"
+      href: "https://api.whatsapp.com/send/?phone=380993564536&text&type=phone_number&app_absent=0"
+    email:
+      text: "pm.ukropter@gmail.com"
+      href: "mailto:pm.ukropter@gmail.com"
+    instagram:
+      text: "ukropter"
+      href: "https://www.instagram.com/ukropter/"
+- id: en
+  lang: en
+  pageTitle: "Ukropter"
+  hero:
+    titleLine1: "vICTORY"
+    titleLine2: "technologies"
+    subtitleLine1: "Made in Ukraine"
+    subtitleLine2: "Battle-tested"
+    orderButton: "ORDER"
+    orderLink: "/eng/#contacts-form"
+    supportButton: "SUPPORT"
+    supportLink: "/pages/bank/eng/"
+    heroLink: "UAV UKROPTER"
+    nav:
+      - text: "ABOUT US"
+        href: "#about-company"
+      - text: "OUR products"
+        href: "#our-developments"
+      - text: "TESTIMONIALS"
+        href: "#reviews"
+      - text: "MEDIA"
+        href: "#media"
+      - text: "CONTACTS"
+        href: "#contacts"
+  about:
+    sectionTitle: "About UKROPTER"
+    subtitle: "WE PRODUCE EW-RESISTANT UAVs AND RELIABLE GROUND DRONES"
+    subtitlePattern: "We produce EW-resistant UAVs and reliable ground drones"
+    features:
+      - icon: "/images/propeller.svg"
+        text: "Team of professional engineers"
+      - icon: "/images/pin-svgrepo-com.svg"
+        text: "Local Ukrainian manufacturing"
+      - icon: "/images/lens-svgrepo.svg"
+        text: "DIU & National Guard aligned"
+      - icon: "/images/antenna-svgrepo.svg"
+        text: "Tested in real combat with the enemy"
+    desktopImageText: "Defense Tech Investment summit"
+    carouselImages:
+      - "/images/about-company-img-2.jpg"
+      - "/images/about-company-img-3.jpg"
+      - "/images/about-company-img-1.jpg"
+  advantages:
+    sectionTitle: "ukropter ADVANTAGES"
+    items:
+      - "Resistant to Electronic Warfare"
+      - "Beacon Navigation (No GPS)"
+      - "Stable Video Transmission"
+      - "Smart Ground Station"
+  partnership:
+    sectionTitle: "become a partner"
+    subtitle: "Invest in technologies that bring our shared victory closer"
+    text: "Partnership with UKROPTER means contributing to Ukraine's technological independence and saving lives on the frontline. We welcome strategic partners who see drones as the future of defense and want to be part of the solution — not just the response."
+    buttonText: "BECOME A PARTNER"
+    items:
+      - "Transparent processes and direct communication"
+      - "Access to innovations and military technologies"
+      - "Real social value of investment"
+  orderProcess:
+    sectionTitle: "ORDER PROCESS"
+    steps:
+      - "Request"
+      - "Approval"
+      - "Manufacturing"
+      - "Delivery"
+    videoTitle: "Video reports"
+    videos:
+      - "/images/video-1.MP4"
+      - "/images/video-2.MP4"
+      - "/images/video-3.MP4"
+      - "/images/video-4.MP4"
+      - "/images/video-5.MP4"
+  whyUkropter:
+    sectionTitle: "WHY UKROPTER"
+    subtitle: "WITH OUR PRODUCTS, WE PROVIDE:"
+    training:
+      title: "Mandatory Training"
+      link: "https://gda.com.ua/about-us/"
+      image: "/images/academy.svg"
+      text: "In partnership with Global Drone Academy, we provide a mandatory training course that helps quickly and effectively master the operation of Ukropter drones. The training is included in the product price."
+    items:
+      - "24/7 Technical Support"
+      - "Warranty on Our Products"
+  contacts:
+    sectionTitle: "contacts"
+    subtitle: "WE ARE ALWAYS IN TOUCH"
+    subtitlePattern: "We are always in touch"
+    text: "Fill out the form or message us via WhatsApp or Signal — we'll respond promptly to all inquiries."
+    phone:
+      text: "38 (099) 356 45 36 (WhatsApp & Signal)"
+      href: "tel:+380993564536"
+    email:
+      text: "pm.ukropter@gmail.com"
+      href: "mailto:pm.ukropter@gmail.com"
+    instagram:
+      text: "ukropter"
+      href: "https://www.instagram.com/ukropter/"

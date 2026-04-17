@@ -1,0 +1,45 @@
+slug: ukropter-platform
+order: 4
+reverse: true
+images:
+  - /images/platform.webp
+ua:
+  title: "UKROPTER PLATFORM"
+  items:
+    - name: "Носій ретранслятора"
+      text: "Збільшення дальності зв'язку, забезпечуючи точність, витривалість і технологічність у будь-яких умовах; утримання заданого напрямку з прив'язкою до ландшафту"
+  equipmentTitle: "Характеристики:"
+  equipment:
+    - name: "Тривалість польоту з навантаженням 1 кг: 60 хв, 70 хв, 80 хв (залежно від АКБ)"
+    - name: "Точність по азимуту: 1 градус"
+    - name: "Рекомендована висота: до 800 м"
+    - name: "Навігація UAV (видалити), замість цього"
+    - name: "Оптична навігація/стабілізація: СтабХ"
+    - name: "Камера: SIYI A2 mini"
+    - name: "Висота польоту — до 400 м"
+    - name: "підвищена стабілізація"
+    - name: "Розмір рами — 18"
+    - name: "час розгортання — 5 хв"
+    - name: "Вага навантаження — до 1,5 кг"
+    - name: "тактичний радіус — 5 км"
+    - name: "Робота без GPS"
+en:
+  title: "UKROPTER PLATFORM"
+  items:
+    - name: "Relay Drone"
+      text: "Enhances signal quality, increases accuracy, reliability, and tactical radius, enabling command and control in complex terrain or at long range"
+  equipmentTitle: "Specifications:"
+  equipment:
+    - name: "Flight duration with 1 kg payload: 60, 70, 80 min (depending on battery)"
+    - name: "Azimuth accuracy: 1 degree"
+    - name: "Recommended altitude: up to 800 m"
+    - name: "UAV navigation: not specified; use optical navigation instead"
+    - name: "Optical navigation / stabilization: StabX"
+    - name: "Camera: SIYI A2 mini"
+    - name: "Flight altitude — up to 400 m"
+    - name: "Enhanced stabilization"
+    - name: "Frame size — 18"
+    - name: "Deployment time — 5 min"
+    - name: "Payload weight — up to 1.5 kg"
+    - name: "Tactical range — 5 km"
+    - name: "Operation without GPS"

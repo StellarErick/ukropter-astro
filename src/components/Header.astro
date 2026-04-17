@@ -1,0 +1,202 @@
+---
+import type { Lang } from '@/i18n/ui'
+import { useTranslations, getHomePath, getLangSwitchPath } from '@/i18n/ui'
+
+interface Props {
+  lang: Lang
+  currentPath?: string
+}
+
+const { lang, currentPath = '/' } = Astro.props
+const t = useTranslations(lang)
+const homePath = getHomePath(lang)
+const switchPath = getLangSwitchPath(lang, currentPath)
+const switchLabel = lang === 'ua' ? 'ENG' : 'UA'
+const contactsPath = lang === 'en' ? '/eng/#contacts-form' : '/#contacts-form'
+const bankPath = lang === 'en' ? '/pages/bank/eng/' : '/pages/bank/'
+---
+
+<header class="header">
+  <div class="container">
+    <div class="header__container">
+      <a href={homePath}>
+        <img
+          src="/images/logo.svg"
+          alt="logo"
+          class="header__logo-img"
+          loading="lazy"
+          fetchpriority="low"
+        />
+      </a>
+
+      <div class="hamburger-and-language">
+        <a class="language-button" href={switchPath}>{switchLabel}</a>
+        <button class="header__hamburger" aria-label="Open menu">
+          <span class="header__hamburger-line header__hamburger-line--top"></span>
+          <span class="header__hamburger-line header__hamburger-line--middle"></span>
+          <span class="header__hamburger-line header__hamburger-line--bottom"></span>
+        </button>
+      </div>
+      <div class="header__buttons-container">
+        <a class="language-button" href={switchPath}>{switchLabel}</a>
+        <div class="header__buttons">
+          <a class="button-primary" href={contactsPath}>
+            {t('btn.order')}
+          </a>
+          <a class="button-secondary" href={bankPath}>
+            {t('btn.support')}
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="header__dropdown">
+      <nav class="header__nav">
+        <ul class="header__nav-list">
+          <li class="header__nav-item">
+            <a href={`${homePath}#about-company`} class="menu-link">{t('nav.about')}</a>
+          </li>
+          <li class="header__nav-item">
+            <a href={`${homePath}#our-developments`} class="menu-link">{t('nav.products')}</a>
+          </li>
+          <li class="header__nav-item">
+            <a href={`${homePath}#reviews`} class="menu-link">{t('nav.reviews')}</a>
+          </li>
+          <li class="header__nav-item">
+            <a href={`${homePath}#media`} class="menu-link">{t('nav.media')}</a>
+          </li>
+          <li class="header__nav-item">
+            <a href={`${homePath}#contacts`} class="menu-link">{t('nav.contacts')}</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="header__buttons">
+        <a class="button-primary" href={contactsPath}>
+          {t('btn.order')} <span class="button-primary__text">{t('btn.order.drone')}</span>
+        </a>
+        <a class="button-secondary" href={bankPath}>
+          {t('btn.support')}
+          <span class="button-secondary__text">{t('btn.support.production')}</span>
+        </a>
+      </div>
+      <a class="language-button" href={switchPath}>{switchLabel}</a>
+      <ul class="header__social-list">
+        <li class="header__social-item">
+          <a href="https://www.instagram.com/ukropter/" target="_blank" class="social-link">
+            <svg class="social-icon">
+              <use href="/images/sprite.svg#icon-Instagram-Icon"></use>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<script>
+  class Hamburger {
+    container: HTMLElement
+    hamburger: HTMLElement | null
+    dropdown: HTMLElement | null
+    body: HTMLElement
+    links: NodeListOf<HTMLElement>
+    primaryButtons: NodeListOf<HTMLElement>
+    secondaryButtons: NodeListOf<HTMLElement>
+
+    constructor(headerEl: HTMLElement) {
+      this.container = headerEl.querySelector('.container') as HTMLElement
+      this.hamburger = this.container.querySelector('.header__hamburger')
+      this.dropdown = this.container.querySelector('.header__dropdown')
+      this.body = document.body
+      this.links = this.container.querySelectorAll('.menu-link')
+      this.primaryButtons = this.container.querySelectorAll('.button-primary')
+      this.secondaryButtons = this.container.querySelectorAll('.button-secondary')
+    }
+
+    init() {
+      this.primaryButtons.forEach((button) => {
+        button.addEventListener('click', (event) => {
+          event.stopPropagation()
+          this.closeDropdown()
+        })
+      })
+
+      this.secondaryButtons.forEach((button) => {
+        button.addEventListener('click', (event) => {
+          event.stopPropagation()
+          this.closeDropdown()
+        })
+      })
+
+      this.links.forEach((link) => {
+        link.addEventListener('click', (event) => {
+          event.stopPropagation()
+          this.closeDropdown()
+        })
+      })
+
+      this.container.addEventListener('click', (event) => {
+        event.stopPropagation()
+      })
+
+      if (this.hamburger) {
+        this.hamburger.addEventListener('click', () => {
+          this.hamburger!.classList.toggle('header__hamburger-open')
+          this.dropdown!.classList.toggle('header__dropdown--open')
+          this.body.classList.toggle('no-scroll')
+        })
+      }
+
+      this.body.addEventListener('click', () => {
+        this.closeDropdown()
+      })
+
+      this.changeColorBackgroundByScroll()
+    }
+
+    closeDropdown() {
+      this.hamburger?.classList.remove('header__hamburger-open')
+      this.dropdown?.classList.remove('header__dropdown--open')
+      this.body.classList.remove('no-scroll')
+    }
+
+    changeColorBackgroundByScroll() {
+      const header = this.container.closest('header') as HTMLElement
+      let lastScrollY = window.scrollY
+      let isHeaderVisible = true
+      const isDesktop = window.innerWidth > 1023
+
+      window.addEventListener('scroll', () => {
+        const currentScrollY = window.scrollY
+        const scrollDifference = currentScrollY - lastScrollY
+
+        if (currentScrollY > 25) {
+          if (isDesktop) {
+            header.style.backgroundColor = 'var(--color-secondary-bg-color)'
+          }
+        } else {
+          if (isDesktop) {
+            header.style.backgroundColor = 'transparent'
+          }
+        }
+
+        if (scrollDifference > 20 && isHeaderVisible) {
+          header.style.transform = 'translateY(-100%)'
+          header.style.transition = 'transform 0.3s ease-in-out'
+          isHeaderVisible = false
+        } else if (scrollDifference < -20 && !isHeaderVisible) {
+          header.style.transform = 'translateY(0)'
+          header.style.transition = 'transform 0.3s ease-in-out'
+          isHeaderVisible = true
+        }
+
+        lastScrollY = currentScrollY
+      })
+    }
+  }
+
+  const headerEl = document.querySelector('header.header') as HTMLElement
+  if (headerEl) {
+    new Hamburger(headerEl).init()
+  }
+</script>

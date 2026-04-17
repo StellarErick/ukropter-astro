@@ -1,0 +1,36 @@
+slug: nrk-djura
+order: 3
+reverse: false
+images:
+  - /images/djura/djura-1.webp
+  - /images/djura/djura-2.webp
+ua:
+  title: "НРК DJURA"
+  items:
+    - name: "Aвтономна платформа"
+      text: "Платформа здатна доставляти вантажі, медичне обладнання та інші критично важливі ресурси, сприяючи збереженню життя бійців"
+  equipmentTitle: "Характеристики:"
+  equipment:
+    - name: "Корисний вантаж — до 170 кг"
+    - name: "Вaгa платформи — 130 кг"
+    - name: "Швидкість — до 7 км/год"
+    - name: "Повнопривідне шасі 6×6"
+    - name: "Запас ходу (з вантажем) — до 20 км"
+    - name: "Керування на відстані до 3 км"
+    - name: "Непробивні колеса"
+    - name: "Можливість відеоконтролю"
+en:
+  title: "GROUND-BASED EXCHANGER DJURA"
+  items:
+    - name: "Autonomous Platform"
+      text: "A platform for transporting ammunition, wounded personnel, and other cargo during combat missions, reducing risks to soldiers' lives"
+  equipmentTitle: "Specifications::"
+  equipment:
+    - name: "Payload capacity – up to 170 kg"
+    - name: "Platform weight – 130 kg"
+    - name: "Speed – up to 7 km/h"
+    - name: "6×6 all-wheel drive chassis"
+    - name: "Range with load – up to 20 km"
+    - name: "Control signal range – up to 3 km"
+    - name: "Puncture-proof wheels"
+    - name: "Video surveillance capability"

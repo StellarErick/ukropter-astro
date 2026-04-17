@@ -1,0 +1,66 @@
+---
+import { getCollection } from 'astro:content'
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import ButtonIban from '@/components/ButtonIban.astro'
+
+const bankData = await getCollection('bank')
+const details = bankData.find((d) => d.data.lang === 'en')!.data
+---
+
+<BaseLayout title={details.title} lang="en">
+  <div class="header-bg"></div>
+  <section class="bank section">
+    <div class="container">
+      <div class="bank__content">
+        <div class="bank__text-content">
+          <h3 class="bank__title">
+            <span class="text-stack">
+              <span class="text-base typography-h3"
+                >{details.title}
+              </span>
+              <span aria-hidden="true" class="text-pattern typography-h3"
+                >{details.title}
+              </span>
+            </span>
+          </h3>
+          <p class="bank__text">
+            <span>{details.fundName}</span>
+            <span>{details.bankInfo}</span>
+            <span>{details.iban}</span>
+            <span>{details.purpose}</span>
+          </p>
+          <ButtonIban iban={details.iban} label="IBAN" copyText={details.copyText} copiedText={details.copiedText} />
+          <ButtonIban iban={details.edrpouCode} label={details.edrpouLabel} copyText={details.copyText} copiedText={details.copiedText} />
+        </div>
+        <div class="bank__image"></div>
+      </div>
+
+      <div class="bank__documents-wrapper">
+        <h3 class="bank__title">
+          <span class="text-stack">
+            <span class="text-base typography-h3"
+              >{details.documentsTitle}
+            </span>
+            <span aria-hidden="true" class="text-pattern typography-h3"
+              >{details.documentsTitle}
+            </span>
+          </span>
+        </h3>
+
+        <div class="bank__documents">
+          {details.documents.map((doc) => (
+            <a
+              href={doc.file}
+              target="_blank"
+              download=""
+              class="bank__document"
+            >
+              <span class="bank__document-text">{doc.name}</span>
+              <svg width="20" height="20"><use href="/images/sprite.svg#icon-download"></use></svg>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

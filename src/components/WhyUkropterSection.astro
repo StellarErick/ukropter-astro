@@ -1,0 +1,47 @@
+---
+interface Props {
+  data: {
+    sectionTitle: string
+    subtitle: string
+    training: {
+      title: string
+      link: string
+      image: string
+      text: string
+    }
+    items: string[]
+  }
+}
+
+const { data } = Astro.props
+---
+
+<section class="our-partners section why-ukropter">
+  <div class="container">
+    <div class="title-container-h2">
+      <h2 class="typography-h2">{data.sectionTitle}</h2>
+    </div>
+    <h3 class="our-developments__item-title start-partnership__title">
+      <span class="text-stack">
+        <span class="text-base typography-h3">{data.subtitle}</span>
+        <span aria-hidden="true" class="text-pattern typography-h3">{data.subtitle}</span>
+      </span>
+    </h3>
+    <ul class="advanteges__list why-we__list">
+      <li class="advanteges__item why-we__item">
+        <div class="why-we__item-title">
+          <p class="advanteges__item-text why-we__item-title-text">{data.training.title}</p>
+          <a href={data.training.link} target="_blank" class="why-we__item-link">
+            <img src={data.training.image} alt={data.training.title} class="why-we__item-image" loading="lazy" fetchpriority="low" />
+          </a>
+        </div>
+        <p class="why-we__item-text">{data.training.text}</p>
+      </li>
+      {data.items.map(item => (
+        <li class="advanteges__item">
+          <p class="advanteges__item-text">{item}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

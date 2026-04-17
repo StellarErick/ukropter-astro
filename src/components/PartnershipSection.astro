@@ -1,0 +1,38 @@
+---
+interface Props {
+  data: {
+    sectionTitle: string
+    subtitle: string
+    text: string
+    buttonText: string
+    items: string[]
+  }
+}
+
+const { data } = Astro.props
+---
+
+<section class="container our-partners section">
+  <div class="title-container-h2">
+    <h2 class="typography-h2">{data.sectionTitle}</h2>
+  </div>
+  <h3 class="our-developments__item-title start-partnership__title">
+    <span class="text-stack">
+      <span class="text-base typography-h3">{data.subtitle}</span>
+      <span aria-hidden="true" class="text-pattern typography-h3">{data.subtitle}</span>
+    </span>
+  </h3>
+  <div class="start-partnership__content">
+    <p class="start-partnership__content-text">{data.text}</p>
+    <a href="#contacts-form" class="button-order start-partnership__button">
+      {data.buttonText}
+    </a>
+  </div>
+  <ul class="advanteges__list start-partnership__list">
+    {data.items.map(item => (
+      <li class="advanteges__item">
+        <p class="advanteges__item-text">{item}</p>
+      </li>
+    ))}
+  </ul>
+</section>

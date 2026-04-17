@@ -1,0 +1,70 @@
+---
+interface Props {
+  data: {
+    titleLine1: string
+    titleLine2: string
+    subtitleLine1: string
+    subtitleLine2: string
+    orderButton: string
+    orderLink: string
+    supportButton: string
+    supportLink: string
+    heroLink: string
+    nav: { text: string; href: string }[]
+  }
+  lang: 'ua' | 'en'
+}
+
+const { data, lang } = Astro.props
+const isEn = lang === 'en'
+---
+
+<section class="hero">
+  <div class="container">
+    <div class="hero__content">
+      <h1 class="hero__title">
+        <span class="text-stack">
+          <span class:list={['typography-h1', 'text-base', { 'typography-h1-eng': isEn }]}>
+            {data.titleLine1}
+            <span class:list={['hero__title-span', { 'hero__title-span-eng': isEn }]}>{data.titleLine2}</span>
+          </span>
+          <span aria-hidden="true" class:list={['typography-h1', 'text-pattern', { 'typography-h1-eng': isEn }]}>
+            {data.titleLine1}
+            <span class:list={['hero__title-span', { 'hero__title-span-eng': isEn }]}>{data.titleLine2}</span>
+          </span>
+        </span>
+        <p class:list={['hero__subtitle', 'hero__subtitle--desktop', { 'hero__subtitle--desktop-eng': isEn }]}>
+          {data.subtitleLine1}
+          <br />
+          {data.subtitleLine2}
+        </p>
+      </h1>
+      <nav class="header__nav hero__nav">
+        <ul class="header__nav-list">
+          {data.nav.map(item => (
+            <li class="header__nav-item">
+              <a href={item.href} class="menu-link">{item.text}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
+    <p class="hero__subtitle hero__subtitle--mobile">
+      {data.subtitleLine1}
+      <br />
+      {data.subtitleLine2}
+    </p>
+    <div class="hero__buttons hero__buttons--mobile">
+      <a class="button-primary" href={data.orderLink}>
+        {data.orderButton}
+      </a>
+      <a class="button-secondary" href={data.supportLink}>{data.supportButton}</a>
+    </div>
+    <a href="#our-developments" class="link-primary hero__link">
+      <span>{data.heroLink}</span>
+      <svg class="chevron-svg">
+        <use href="/images/sprite.svg#icon-chevron"></use>
+      </svg>
+    </a>
+  </div>
+</section>

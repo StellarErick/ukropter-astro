@@ -1,0 +1,23 @@
+---
+interface Props {
+  data: {
+    sectionTitle: string
+    items: string[]
+  }
+}
+
+const { data } = Astro.props
+---
+
+<section class="container advanteges section">
+  <div class="title-container-h2">
+    <h2 class="typography-h2">{data.sectionTitle}</h2>
+  </div>
+  <ul class="advanteges__list">
+    {data.items.map(item => (
+      <li class="advanteges__item">
+        <p class="advanteges__item-text">{item}</p>
+      </li>
+    ))}
+  </ul>
+</section>
