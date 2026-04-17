@@ -1,6 +1,16 @@
 import { defineCollection } from 'astro:content'
 import { glob, file } from 'astro/loaders'
 import { z } from 'astro/zod'
+import { parse as parseYaml } from 'yaml'
+
+function yamlList(path: string) {
+  return file(path, {
+    parser: (text) => {
+      const data = parseYaml(text)
+      return Array.isArray(data) ? data : data.items ?? data
+    },
+  })
+}
 
 const i18nString = z.object({
   ua: z.string(),
@@ -72,7 +82,7 @@ const products = defineCollection({
 })
 
 const faq = defineCollection({
-  loader: file('./src/content/faq/items.yaml'),
+  loader: yamlList('./src/content/faq/items.yaml'),
   schema: z.object({
     question: i18nString,
     answerHtml: i18nString,
@@ -80,7 +90,7 @@ const faq = defineCollection({
 })
 
 const media = defineCollection({
-  loader: file('./src/content/media/articles.yaml'),
+  loader: yamlList('./src/content/media/articles.yaml'),
   schema: z.object({
     logo: z.string(),
     date: z.string(),
@@ -92,7 +102,7 @@ const media = defineCollection({
 })
 
 const reviews = defineCollection({
-  loader: file('./src/content/reviews/items.yaml'),
+  loader: yamlList('./src/content/reviews/items.yaml'),
   schema: z.object({
     name: i18nString,
     position: i18nString,
@@ -102,7 +112,7 @@ const reviews = defineCollection({
 })
 
 const partners = defineCollection({
-  loader: file('./src/content/partners/items.yaml'),
+  loader: yamlList('./src/content/partners/items.yaml'),
   schema: z.object({
     name: z.string(),
     logo: z.string(),
@@ -110,7 +120,7 @@ const partners = defineCollection({
 })
 
 const chosenBy = defineCollection({
-  loader: file('./src/content/partners/chosen-by.yaml'),
+  loader: yamlList('./src/content/partners/chosen-by.yaml'),
   schema: z.object({
     logo: z.string(),
     text: z.string(),
@@ -118,7 +128,7 @@ const chosenBy = defineCollection({
 })
 
 const homepage = defineCollection({
-  loader: file('./src/content/homepage/content.yaml'),
+  loader: yamlList('./src/content/homepage/content.yaml'),
   schema: z.object({
     lang: z.string(),
     pageTitle: z.string(),
@@ -183,7 +193,7 @@ const homepage = defineCollection({
 })
 
 const bank = defineCollection({
-  loader: file('./src/content/bank/details.yaml'),
+  loader: yamlList('./src/content/bank/details.yaml'),
   schema: z.object({
     lang: z.string(),
     title: z.string(),

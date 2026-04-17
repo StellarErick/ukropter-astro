@@ -1,0 +1,370 @@
+backend:
+  name: github
+  repo: StellarErick/ukropter-astro
+  branch: main
+
+local_backend: true
+
+media_folder: "public/images"
+public_folder: "/images"
+
+collections:
+  # --- Products (folder: one YAML per product) ---
+  - name: products
+    label: "Продукти"
+    label_singular: "Продукт"
+    folder: "src/content/products"
+    extension: yaml
+    format: yaml
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { name: slug, label: "Slug (URL)", widget: string }
+      - { name: order, label: "Порядок", widget: number, value_type: int }
+      - { name: reverse, label: "Реверс (зміна напрямку)", widget: boolean, default: false, required: false }
+      - name: images
+        label: "Зображення"
+        widget: list
+        field: { name: image, label: "Зображення", widget: image }
+      - name: badge
+        label: "Бейдж"
+        widget: object
+        required: false
+        collapsed: true
+        fields:
+          - { name: ua, label: "UA текст", widget: string }
+          - { name: en, label: "EN текст", widget: string }
+          - { name: icon, label: "Іконка (sprite id)", widget: string }
+      - name: ua
+        label: "UA контент"
+        widget: object
+        fields:
+          - { name: title, label: "Назва", widget: string }
+          - name: items
+            label: "Характеристики"
+            widget: list
+            required: false
+            fields:
+              - { name: name, label: "Назва", widget: string }
+              - { name: data, label: "Дані", widget: string, required: false }
+              - { name: text, label: "Опис", widget: string }
+          - { name: equipmentTitle, label: "Заголовок комплектації", widget: string, required: false }
+          - name: equipment
+            label: "Комплектація"
+            widget: list
+            required: false
+            fields:
+              - { name: name, label: "Назва", widget: string }
+              - { name: qty, label: "Кількість", widget: string, required: false }
+      - name: en
+        label: "EN контент"
+        widget: object
+        fields:
+          - { name: title, label: "Title", widget: string }
+          - name: items
+            label: "Specs"
+            widget: list
+            required: false
+            fields:
+              - { name: name, label: "Name", widget: string }
+              - { name: data, label: "Data", widget: string, required: false }
+              - { name: text, label: "Description", widget: string }
+          - { name: equipmentTitle, label: "Equipment title", widget: string, required: false }
+          - name: equipment
+            label: "Equipment"
+            widget: list
+            required: false
+            fields:
+              - { name: name, label: "Name", widget: string }
+              - { name: qty, label: "Quantity", widget: string, required: false }
+
+  # --- FAQ ---
+  - name: faq
+    label: "FAQ"
+    files:
+      - name: items
+        label: "Питання та відповіді"
+        file: "src/content/faq/items.yaml"
+        fields:
+          - name: items
+            label: "FAQ"
+            label_singular: "Питання"
+            widget: list
+            fields:
+              - { name: id, label: "ID", widget: string }
+              - name: question
+                label: "Питання"
+                widget: object
+                fields:
+                  - { name: ua, label: "UA", widget: string }
+                  - { name: en, label: "EN", widget: string }
+              - name: answerHtml
+                label: "Відповідь (HTML)"
+                widget: object
+                fields:
+                  - { name: ua, label: "UA", widget: text }
+                  - { name: en, label: "EN", widget: text }
+
+  # --- Media ---
+  - name: media
+    label: "Медіа"
+    files:
+      - name: articles
+        label: "Статті"
+        file: "src/content/media/articles.yaml"
+        fields:
+          - name: items
+            label: "Статті"
+            label_singular: "Стаття"
+            widget: list
+            fields:
+              - { name: id, label: "ID", widget: string }
+              - { name: logo, label: "Логотип", widget: image }
+              - { name: date, label: "Дата", widget: string }
+              - name: title
+                label: "Заголовок"
+                widget: object
+                fields:
+                  - { name: ua, label: "UA", widget: string }
+                  - { name: en, label: "EN", widget: string }
+              - { name: url, label: "URL", widget: string }
+              - name: linkText
+                label: "Текст посилання"
+                widget: object
+                fields:
+                  - { name: ua, label: "UA", widget: string }
+                  - { name: en, label: "EN", widget: string }
+              - { name: pair, label: "Пара (група слайдів)", widget: number, value_type: int, required: false }
+
+  # --- Reviews ---
+  - name: reviews
+    label: "Відгуки"
+    files:
+      - name: items
+        label: "Відгуки"
+        file: "src/content/reviews/items.yaml"
+        fields:
+          - name: items
+            label: "Відгуки"
+            label_singular: "Відгук"
+            widget: list
+            fields:
+              - { name: id, label: "ID", widget: string }
+              - name: name
+                label: "Ім'я"
+                widget: object
+                fields:
+                  - { name: ua, label: "UA", widget: string }
+                  - { name: en, label: "EN", widget: string }
+              - name: position
+                label: "Посада"
+                widget: object
+                fields:
+                  - { name: ua, label: "UA", widget: text }
+                  - { name: en, label: "EN", widget: text }
+              - { name: image, label: "Фото", widget: image }
+              - name: text
+                label: "Текст відгуку"
+                widget: object
+                fields:
+                  - { name: ua, label: "UA", widget: text }
+                  - { name: en, label: "EN", widget: text }
+
+  # --- Partners ---
+  - name: partners
+    label: "Партнери"
+    files:
+      - name: items
+        label: "Партнери"
+        file: "src/content/partners/items.yaml"
+        fields:
+          - name: items
+            label: "Партнери"
+            label_singular: "Партнер"
+            widget: list
+            fields:
+              - { name: id, label: "ID", widget: string }
+              - { name: name, label: "Назва", widget: string }
+              - { name: logo, label: "Логотип", widget: image }
+      - name: chosen-by
+        label: "Нас обирають"
+        file: "src/content/partners/chosen-by.yaml"
+        fields:
+          - name: items
+            label: "Підрозділи"
+            label_singular: "Підрозділ"
+            widget: list
+            fields:
+              - { name: id, label: "ID", widget: string }
+              - { name: logo, label: "Логотип", widget: image }
+              - { name: text, label: "Назва", widget: string }
+
+  # --- Homepage ---
+  - name: homepage
+    label: "Головна сторінка"
+    files:
+      - name: content
+        label: "Контент головної"
+        file: "src/content/homepage/content.yaml"
+        fields:
+          - name: items
+            label: "Мовні версії"
+            widget: list
+            fields:
+              - { name: id, label: "ID", widget: string }
+              - { name: lang, label: "Мова", widget: select, options: ["ua", "en"] }
+              - { name: pageTitle, label: "Заголовок сторінки", widget: string }
+              - name: hero
+                label: "Hero секція"
+                widget: object
+                collapsed: true
+                fields:
+                  - { name: titleLine1, label: "Заголовок рядок 1", widget: string }
+                  - { name: titleLine2, label: "Заголовок рядок 2", widget: string }
+                  - { name: subtitleLine1, label: "Підзаголовок рядок 1", widget: string }
+                  - { name: subtitleLine2, label: "Підзаголовок рядок 2", widget: string }
+                  - { name: orderButton, label: "Кнопка замовлення", widget: string }
+                  - { name: orderLink, label: "Посилання замовлення", widget: string }
+                  - { name: supportButton, label: "Кнопка підтримки", widget: string }
+                  - { name: supportLink, label: "Посилання підтримки", widget: string }
+                  - { name: heroLink, label: "Текст Hero-посилання", widget: string }
+                  - name: nav
+                    label: "Навігація"
+                    widget: list
+                    fields:
+                      - { name: text, label: "Текст", widget: string }
+                      - { name: href, label: "Посилання", widget: string }
+              - name: about
+                label: "Про компанію"
+                widget: object
+                collapsed: true
+                fields:
+                  - { name: sectionTitle, label: "Заголовок секції", widget: string }
+                  - { name: subtitle, label: "Підзаголовок", widget: string }
+                  - { name: subtitlePattern, label: "Підзаголовок (pattern)", widget: string }
+                  - name: features
+                    label: "Особливості"
+                    widget: list
+                    fields:
+                      - { name: icon, label: "Іконка", widget: image }
+                      - { name: text, label: "Текст", widget: string }
+                  - { name: desktopImageText, label: "Підпис зображення", widget: string }
+                  - name: carouselImages
+                    label: "Зображення каруселі"
+                    widget: list
+                    field: { name: image, label: "Зображення", widget: image }
+              - name: advantages
+                label: "Переваги"
+                widget: object
+                collapsed: true
+                fields:
+                  - { name: sectionTitle, label: "Заголовок", widget: string }
+                  - name: items
+                    label: "Переваги"
+                    widget: list
+                    field: { name: item, label: "Перевага", widget: string }
+              - name: partnership
+                label: "Партнерство"
+                widget: object
+                collapsed: true
+                fields:
+                  - { name: sectionTitle, label: "Заголовок", widget: string }
+                  - { name: subtitle, label: "Підзаголовок", widget: string }
+                  - { name: text, label: "Текст", widget: text }
+                  - { name: buttonText, label: "Текст кнопки", widget: string }
+                  - name: items
+                    label: "Переваги партнерства"
+                    widget: list
+                    field: { name: item, label: "Перевага", widget: string }
+              - name: orderProcess
+                label: "Процес замовлення"
+                widget: object
+                collapsed: true
+                fields:
+                  - { name: sectionTitle, label: "Заголовок", widget: string }
+                  - name: steps
+                    label: "Кроки"
+                    widget: list
+                    field: { name: step, label: "Крок", widget: string }
+                  - { name: videoTitle, label: "Заголовок відео", widget: string }
+                  - name: videos
+                    label: "Відео"
+                    widget: list
+                    field: { name: video, label: "Відео (шлях)", widget: string }
+              - name: whyUkropter
+                label: "Чому Укроптер"
+                widget: object
+                collapsed: true
+                fields:
+                  - { name: sectionTitle, label: "Заголовок", widget: string }
+                  - { name: subtitle, label: "Підзаголовок", widget: string }
+                  - name: training
+                    label: "Навчання"
+                    widget: object
+                    fields:
+                      - { name: title, label: "Заголовок", widget: string }
+                      - { name: link, label: "Посилання", widget: string }
+                      - { name: image, label: "Зображення", widget: image }
+                      - { name: text, label: "Текст", widget: text }
+                  - name: items
+                    label: "Додаткові послуги"
+                    widget: list
+                    field: { name: item, label: "Послуга", widget: string }
+              - name: contacts
+                label: "Контакти"
+                widget: object
+                collapsed: true
+                fields:
+                  - { name: sectionTitle, label: "Заголовок", widget: string }
+                  - { name: subtitle, label: "Підзаголовок", widget: string }
+                  - { name: subtitlePattern, label: "Підзаголовок (pattern)", widget: string }
+                  - { name: text, label: "Текст", widget: text }
+                  - name: phone
+                    label: "Телефон"
+                    widget: object
+                    fields:
+                      - { name: text, label: "Текст", widget: string }
+                      - { name: href, label: "Посилання", widget: string }
+                  - name: email
+                    label: "Email"
+                    widget: object
+                    fields:
+                      - { name: text, label: "Текст", widget: string }
+                      - { name: href, label: "Посилання", widget: string }
+                  - name: instagram
+                    label: "Instagram"
+                    widget: object
+                    fields:
+                      - { name: text, label: "Текст", widget: string }
+                      - { name: href, label: "Посилання", widget: string }
+
+  # --- Bank ---
+  - name: bank
+    label: "Банківські реквізити"
+    files:
+      - name: details
+        label: "Реквізити"
+        file: "src/content/bank/details.yaml"
+        fields:
+          - name: items
+            label: "Мовні версії"
+            widget: list
+            fields:
+              - { name: id, label: "ID", widget: string }
+              - { name: lang, label: "Мова", widget: select, options: ["ua", "en"] }
+              - { name: title, label: "Заголовок", widget: string }
+              - { name: documentsTitle, label: "Заголовок документів", widget: string }
+              - { name: fundName, label: "Назва фонду", widget: string }
+              - { name: bankInfo, label: "Банк", widget: string }
+              - { name: iban, label: "IBAN", widget: string }
+              - { name: edrpouCode, label: "Код ЄДРПОУ", widget: string }
+              - { name: edrpouLabel, label: "Мітка ЄДРПОУ", widget: string }
+              - { name: purpose, label: "Призначення платежу", widget: string }
+              - { name: copyText, label: "Текст 'Скопіювати'", widget: string, required: false }
+              - { name: copiedText, label: "Текст 'Скопійовано'", widget: string, required: false }
+              - name: documents
+                label: "Документи"
+                widget: list
+                fields:
+                  - { name: name, label: "Назва", widget: string }
+                  - { name: file, label: "Файл", widget: file }

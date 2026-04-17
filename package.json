@@ -6,11 +6,16 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "cms": "npx decap-server"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "@splidejs/splide": "^4.1.4",
-    "astro": "^6.0.5"
+    "astro": "^6.0.5",
+    "yaml": "^2.8.3"
+  },
+  "devDependencies": {
+    "decap-server": "^3.7.0"
   }
 }
